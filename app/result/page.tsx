@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useEffect } from "react"
@@ -18,7 +19,7 @@ export default function ResultPage() {
   if (!image || !analysis) return null
 
   return (
-    <main className="min-h-dvh flex items-start justify-center p-4 bg-[radial-gradient(900px_500px_at_85%_-10%,var(--brand-blue-50),white)]">
+    <main className="min-h-0 max-h-[100vh]  flex items-start justify-center p-4 overflow-auto bg-[radial-gradient(900px_500px_at_85%_-10%,var(--brand-blue-50),white)]">
       <div className="w-full max-w-[420px] space-y-4">
         <Card className="p-6 space-y-5 shadow">
           {/* Image framed in pink on top */}
@@ -26,7 +27,7 @@ export default function ResultPage() {
             <img
               src={image || "/placeholder.svg?height=420&width=320&query=analyzed%20face%20result"}
               alt="Hasil analisis wajah"
-              className="mx-auto aspect-[4/5] w-full max-w-[320px] rounded-xl object-cover"
+              className="mx-auto aspect-[4/5] w-full max-w-[160px] rounded-xl object-cover "
             />
           </div>
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useEffect } from "react"
@@ -8,7 +9,6 @@ import { useImageStore } from "@/hooks/use-image-store"
 import { analyzeImage } from "@/lib/analyze"
 import { Loader2 } from "lucide-react"
 import { useState } from "react"
-import Image from "next/image"
 
 export default function PreviewPage() {
   const router = useRouter()
