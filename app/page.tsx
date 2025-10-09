@@ -1,103 +1,107 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import { useRef } from "react"
+import { useRouter } from "next/navigation"
+import { Card } from "@/components/ui/card"
+import { Camera, ImageIcon } from "lucide-react"
+import { useImageStore } from "@/hooks/use-image-store"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import CameraCapture from "@/components/camera-capture"
+
+export default function HomePage() {
+  const router = useRouter()
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const { setImage } = useImageStore()
+
+  function onFileSelected(file?: File | null) {
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = () => {
+      const dataUrl = typeof reader.result === "string" ? reader.result : ""
+      if (dataUrl) {
+        setImage(dataUrl)
+        router.push("/preview")
+      }
+    }
+    reader.readAsDataURL(file)
+  }
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-dvh flex items-center justify-center p-4">
+      <Card className="relative w-full max-w-[420px] overflow-hidden">
+        {/* Header */}
+        <div className="p-6">
+          <h1 className="text-4xl font-semibold leading-[1.1] text-pretty">Skin{"\n"}Analysis</h1>
+          <p className="text-sm text-muted-foreground mt-2 max-w-[28ch]">
+            Ambil foto wajah atau pilih dari galeri untuk mendapatkan informasi dan rekomendasi.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+        {/* Illustration area with soft blue gradient */}
+        <div className="px-6 pb-32">
+          <div className="rounded-2xl p-4 bg-[linear-gradient(160deg,oklch(0.98_0_230)_0%,oklch(0.96_0_230)_30%,var(--brand-blue-50)_100%)]">
+            <img
+              src="/images/skin-analysis-reference.png"
+              alt="Contoh wajah untuk analisis kulit"
+              className="mx-auto aspect-[4/5] w-[260px] rounded-xl object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Curved bottom plate + circular actions */}
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="relative h-28">
+            <div className="absolute inset-0 bg-(--brand-blue-50)" />
+            <div className="absolute inset-0 rounded-t-[32px] bg-(--brand-blue-100)" />
+            {/* Actions */}
+            <div className="absolute inset-x-0 -top-10 flex items-center justify-center gap-8">
+              {/* Camera (primary pink) */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    aria-label="Buka Kamera"
+                    className="size-20 rounded-full bg-(--brand-pink) text-(--on-pink) shadow-lg grid place-items-center"
+                  >
+                    <Camera className="h-7 w-7" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Ambil Foto</DialogTitle>
+                  </DialogHeader>
+                  <CameraCapture
+                    onCapture={(dataUrl) => {
+                      setImage(dataUrl)
+                      router.push("/preview")
+                    }}
+                  />
+                </DialogContent>
+              </Dialog>
+
+              {/* Gallery (blue) */}
+              <button
+                aria-label="Buka Folder"
+                onClick={() => fileInputRef.current?.click()}
+                className="size-16 rounded-full bg-(--brand-blue) text-(--on-blue) shadow-md grid place-items-center"
+              >
+                <ImageIcon className="h-6 w-6" />
+              </button>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="sr-only"
+                onChange={(e) => onFileSelected(e.target.files?.[0])}
+              />
+            </div>
+
+            {/* Home bar mimic */}
+            <div className="absolute inset-x-0 bottom-2 flex justify-center">
+              <div className="h-1.5 w-24 rounded-full bg-black/20" />
+            </div>
+          </div>
+        </div>
+      </Card>
+    </main>
+  )
 }
