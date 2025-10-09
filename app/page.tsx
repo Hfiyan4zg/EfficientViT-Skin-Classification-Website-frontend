@@ -28,42 +28,38 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-dvh flex items-center justify-center p-4">
-      <Card className="relative w-full max-w-[420px] overflow-hidden">
-        {/* Header */}
-        <div className="p-6">
-          <h1 className="text-4xl font-semibold leading-[1.1] text-pretty">Skin{"\n"}Analysis</h1>
-          <p className="text-sm text-muted-foreground mt-2 max-w-[28ch]">
-            Ambil foto wajah atau pilih dari galeri untuk mendapatkan informasi dan rekomendasi.
-          </p>
+    <main className="min-h-0 max-h-[100vh] flex items-center justify-center p-4 bg-[radial-gradient(900px_500px_at_85%_-10%,var(--brand-blue-50),white)]">
+      <Card className="relative w-full max-w-[420px] h-[100vh] overflow-hidden rounded-2xl">
+        {/* Top header */}
+        <div className="p-6 pt-8">
+          <h1 className="text-5xl font-extrabold leading-[1.02] text-pretty">Skin</h1>
+          <h1 className="text-5xl font-extrabold leading-[1.02] -mt-2 text-pretty">Analysis</h1>
+          <p className="text-xs text-muted-foreground mt-3 max-w-[28ch]">Stay Ahead with Our Latest Updates: Covering National and International News.</p>
         </div>
 
-        {/* Illustration area with soft blue gradient */}
-        <div className="px-6 pb-32">
-          <div className="rounded-2xl p-4 bg-[linear-gradient(160deg,oklch(0.98_0_230)_0%,oklch(0.96_0_230)_30%,var(--brand-blue-50)_100%)]">
-            <img
-              src="/images/skin-analysis-reference.png"
-              alt="Contoh wajah untuk analisis kulit"
-              className="mx-auto aspect-[4/5] w-[260px] rounded-xl object-cover"
-            />
-          </div>
+        {/* Center illustration */}
+        <div className="flex-1 relative flex items-center bottom-28 justify-center  w-[80%]">
+          <img
+            src="/images/dfs.png"
+            alt="Contoh wajah untuk analisis kulit"
+            className="object-cover rounded-b-none rounded-xl w-[100%] max-w-[100vw]"
+          />
         </div>
 
-        {/* Curved bottom plate + circular actions */}
-        <div className="absolute inset-x-0 bottom-0">
-          <div className="relative h-28">
-            <div className="absolute inset-0 bg-(--brand-blue-50)" />
-            <div className="absolute inset-0 rounded-t-[32px] bg-(--brand-blue-100)" />
-            {/* Actions */}
-            <div className="absolute inset-x-0 -top-10 flex items-center justify-center gap-8">
-              {/* Camera (primary pink) */}
+        {/* Curved bottom plate with actions */}
+        <div className="absolute inset-x-0 -bottom-52">
+          <div className="relative">
+            <div className="h-96 w-9h-96 rounded-full bg-gradient-to-r from-[#ff8aa3] to-[#9ad0ff]" />
+
+            {/* Circular actions centered above the curve */}
+            <div className="absolute left-[35%]  -top-10 flex items-center gap-7">
               <Dialog>
                 <DialogTrigger asChild>
                   <button
                     aria-label="Buka Kamera"
-                    className="size-20 rounded-full bg-(--brand-pink) text-(--on-pink) shadow-lg grid place-items-center"
+                    className="w-[131px] border-white border h-[131px] rounded-full bg-(--brand-pink) text-(--on-pink) shadow-2xl grid place-items-center"
                   >
-                    <Camera className="h-7 w-7" />
+                    <Camera className="h-[50px] w-[50px]" />
                   </button>
                 </DialogTrigger>
                 <DialogContent className="max-w-md">
@@ -79,13 +75,12 @@ export default function HomePage() {
                 </DialogContent>
               </Dialog>
 
-              {/* Gallery (blue) */}
               <button
                 aria-label="Buka Folder"
                 onClick={() => fileInputRef.current?.click()}
-                className="size-16 rounded-full bg-(--brand-blue) text-(--on-blue) shadow-md grid place-items-center"
+                className="w-[76px] relative top-8 h-[76px] border border-white rounded-full bg-(--brand-blue) text-(--on-blue) shadow-md grid place-items-center"
               >
-                <ImageIcon className="h-6 w-6" />
+                <ImageIcon className="h-[30px] w-[30px]" />
               </button>
               <input
                 ref={fileInputRef}
@@ -97,8 +92,8 @@ export default function HomePage() {
             </div>
 
             {/* Home bar mimic */}
-            <div className="absolute inset-x-0 bottom-2 flex justify-center">
-              <div className="h-1.5 w-24 rounded-full bg-black/20" />
+            <div className="absolute inset-x-0 bottom-4 flex justify-center">
+              <div className="h-1.5 w-20 rounded-full bg-black/15" />
             </div>
           </div>
         </div>
