@@ -50,15 +50,6 @@ export default function ResultPage() {
             </div>
           </section>
 
-          {/* Treatment section in soft blue panel */}
-          {/* <section className="rounded-2xl border border-(--brand-blue-100) bg-(--brand-blue-50) p-4">
-            <h3 className="font-medium mb-2">Treatment</h3>
-            <ul className="list-disc pl-5 space-y-1 text-sm">
-              {analysis.treatments.map((t, i) => (
-                <li key={i}>{t}</li>
-              ))}
-            </ul>
-          </section> */}
 
           {/* Disclaimer in soft pink with icon */}
           {analysis.warnings.length > 0 && (
