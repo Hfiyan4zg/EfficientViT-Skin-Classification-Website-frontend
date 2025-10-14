@@ -30,18 +30,7 @@ export default function HomePage() {
   return (
     <main className="min-h-0 max-h-[100vh] flex items-center justify-center p-4 bg-[radial-gradient(900px_500px_at_85%_-10%,var(--brand-blue-50),white)]">
       <Card className="relative w-full max-w-[420px] h-[100vh] overflow-hidden rounded-2xl">
-        {/* Custom mobile window/status bar */}
-        <div className="flex items-center justify-between px-4 pt-3 pb-1 select-none text-xs text-black/70">
-          <span className="font-semibold tracking-wide">9:41</span>
-          <div className="flex items-center gap-1">
-            {/* Signal icon */}
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="12" width="2" height="4" rx="1" fill="#222"/><rect x="6" y="10" width="2" height="6" rx="1" fill="#222"/><rect x="10" y="8" width="2" height="8" rx="1" fill="#222"/><rect x="14" y="6" width="2" height="10" rx="1" fill="#222"/></svg>
-            {/* WiFi icon */}
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 8c3-3 9-3 12 0" stroke="#222" strokeWidth="1.5" strokeLinecap="round"/><path d="M6 11c2-2 4-2 6 0" stroke="#222" strokeWidth="1.5" strokeLinecap="round"/><circle cx="9" cy="14" r="1" fill="#222"/></svg>
-            {/* Battery icon */}
-            <svg width="24" height="18" viewBox="0 0 24 18" fill="none"><rect x="2" y="4" width="18" height="10" rx="2" fill="#222"/><rect x="20" y="7" width="2" height="4" rx="1" fill="#222"/><rect x="4" y="6" width="14" height="6" rx="1" fill="#fff"/></svg>
-          </div>
-        </div>
+     
         {/* Top header */}
         <div className="p-6 pt-2">
           <h1 className="text-5xl font-extrabold leading-[1.02] text-pretty">Skin</h1>
