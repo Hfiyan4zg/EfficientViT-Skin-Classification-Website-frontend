@@ -67,7 +67,7 @@ export default function ResultPage() {
 
           {/* Bottom actions */}
           <div className="grid grid-cols-2 gap-3 pt-1">
-            <Button variant="secondary" onClick={() => router.push("/preview")}>
+            <Button variant="secondary" onClick={() => router.push("/")}>
               Retake
             </Button>
             <Button
@@ -90,3 +90,4 @@ export default function ResultPage() {
     </main>
   )
 }
+

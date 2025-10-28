@@ -26,3 +26,4 @@ export const useImageStore = create<Store>((set) => ({
   setAnalysis: (a) => set({ analysis: a }),
   reset: () => set({ image: null, analysis: null }),
 }))
+

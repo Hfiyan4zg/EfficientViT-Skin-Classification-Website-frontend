@@ -30,16 +30,22 @@ export default function HomePage() {
   return (
     <main className="min-h-0 max-h-[100vh] flex items-center justify-center p-4 bg-[radial-gradient(900px_500px_at_85%_-10%,var(--brand-blue-50),white)]">
       <Card className="relative w-full max-w-[420px] h-[100vh] overflow-hidden rounded-2xl">
+
      
         {/* Top header */}
-        <div className="p-6 pt-2">
+        <div className="z-40 p-6 pt-2">
           <h1 className="text-5xl font-extrabold leading-[1.02] text-pretty">Skin</h1>
           <h1 className="text-5xl font-extrabold leading-[1.02] -mt-2 text-pretty">Analysis</h1>
-          <p className="text-xs text-muted-foreground mt-3 max-w-[28ch]">Stay Ahead with Our Latest Updates: Covering National and International News.</p>
+          <p className="text-xs text-muted-foreground mt-3 max-w-[40ch]">Autoimmune Skin Disease Classification using Machine Learning with EfficientViT model.</p>
+        </div>
+
+        {/* Gradial round */}
+        <div className="absolute -top-40 self-center h-[400px] w-[400px] rounded-full bg-radial from-blue-300 from-5% to-white to-70% opacity-80 ">
+
         </div>
 
         {/* Center illustration */}
-        <div className="flex-1 relative flex items-center bottom-28 justify-center  w-[80%]">
+        <div className="flex-1 relative flex items-center bottom-20 justify-center  w-[100%] ">
           <img
             src="/images/dfs.png"
             alt="Contoh wajah untuk analisis kulit"
@@ -48,9 +54,9 @@ export default function HomePage() {
         </div>
 
         {/* Curved bottom plate with actions */}
-        <div className="absolute inset-x-0 -bottom-52">
-          <div className="relative">
-            <div className="h-96 w-9h-96 rounded-full bg-gradient-to-r from-[#ff8aa3] to-[#9ad0ff]" />
+        <div className="absolute inset-x-[-30] -bottom-70">
+          <div className="flex relative">
+            <div className="h-125 w-125 rounded-t-full bg-gradient-to-r from-[#ff8aa3] to-[#9ad0ff] items-center border-3 border-white " />
 
             {/* Circular actions centered above the curve */}
             <div className="absolute left-[35%]  -top-10 flex items-center gap-7">
@@ -102,3 +108,4 @@ export default function HomePage() {
     </main>
   )
 }
+

@@ -27,7 +27,7 @@ export async function analyzeImage(dataUrl: string): Promise<Analysis> {
   formData.append("file", blob, "image.jpg");
 
   // Send FormData to Python API
-  const { data: result } = await axios.post("http://localhost:8000/predict", formData, {
+  const { data: result } = await axios.post("https://hafiyan-skripsion.hubed.id//predict", formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 

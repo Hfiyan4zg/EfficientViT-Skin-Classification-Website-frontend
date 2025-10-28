@@ -69,3 +69,4 @@ export default function CameraCapture({ onCapture }: Props) {
     </div>
   )
 }
+
